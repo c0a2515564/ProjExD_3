@@ -159,6 +159,9 @@ class Score:
         txt = self.fonto.render(f"Score:{self.point}", True, self.color)
         screen.blit(txt, self.rct)
 
+class Explosion:
+    pass
+
 
 def gameover(screen: pg.Surface) -> None:
     """
