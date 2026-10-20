@@ -160,7 +160,25 @@ class Score:
         screen.blit(txt, self.rct)
 
 class Explosion:
-    pass
+    """
+    爆発エフェクトに関するクラス
+    """
+    def __init__(self, bomb_rct: pg.Rect):
+        """ 
+        爆発エフェクトのSurfaceを生成し座標,残存時間を定義する
+        引数 bomb_rct: 爆発した爆弾のRect
+        """
+        self.effect = pg.image.load(f"fig/explosion.gif")
+        self.rev_effect = pg.transform.flip(self.effect, True, True)
+        self.rct = bomb_rct.center
+        self.life = 10
+
+    def update(self, screen: pg.Surface):
+        self.life -= 1
+        if self.life % 2 == 0: # lifeが偶数か奇数かで画像を切り替え
+            screen.blit(self.effect, self.rct)
+        else:
+            screen.blit(self.rev_effect, self.rct)
 
 
 def gameover(screen: pg.Surface) -> None:
