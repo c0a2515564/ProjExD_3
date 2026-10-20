@@ -189,6 +189,10 @@ class Explosion:
         self.appear = 0
 
     def update(self, screen: pg.Surface):
+        """
+        爆発エフェクトを表示する
+        引数 screen:画面Surface
+        """
         self.life -= 1
         if self.life % 4 == 0:  # lifeが偶数か奇数かで画像を切り替え
             self.appear = self.appear ^ 1  # 1との排他的論理和を取ることで1と0を切り替え
