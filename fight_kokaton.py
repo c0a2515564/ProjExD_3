@@ -137,6 +137,16 @@ class Bomb:
         self.rct.move_ip(self.vx, self.vy)
         screen.blit(self.img, self.rct)
 
+def gameover(screen: pg.Surface) -> None:
+    """
+    ゲームオーバー画面を表示する
+    引数 screen:画面Surface
+    """
+    fonto = pg.font.Font(None, 80)
+    txt = fonto.render("Game Over", True, (255, 0, 0))
+    screen.blit(txt, [WIDTH//2-150, HEIGHT//2])
+    pg.display.update()
+    time.sleep(1)
 
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
@@ -162,6 +172,7 @@ def main():
                 bird.change_img(8, screen)
                 pg.display.update()
                 time.sleep(1)
+                gameover(screen)
                 return
 
         if bomb is not None:
