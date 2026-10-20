@@ -139,7 +139,11 @@ class Bomb:
         screen.blit(self.img, self.rct)
 
 class Score:
+    """点数に関するクラス"""
     def __init__(self):
+        """
+        点数表示のSurfaceを生成する
+        """
         self.fonto = pg.font.Font(None, 50)
         self.color = (0, 0, 255)
         self.point = 0
@@ -148,6 +152,10 @@ class Score:
         self.rct.center = (100, HEIGHT-50)
 
     def update(self, screen: pg.Surface):
+        """
+        現在のpointに基づき点数を表示する
+        引数 screen:画面Surface
+        """
         txt = self.fonto.render(f"Score:{self.point}", True, self.color)
         screen.blit(txt, self.rct)
 
